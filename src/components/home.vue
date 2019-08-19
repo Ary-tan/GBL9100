@@ -1,52 +1,91 @@
+<style scoped>
+  .layout-con{
+    height: 100%;
+    width: 100%;
+  }
+  .menu-item span{
+    display: inline-block;
+    overflow: hidden;
+    width: 69px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+    transition: width .2s ease .2s;
+  }
+  .menu-item i{
+    transform: translateX(0px);
+    transition: font-size .2s ease, transform .2s ease;
+    vertical-align: middle;
+    font-size: 16px;
+  }
+  .collapsed-menu span{
+    width: 0px;
+    transition: width .2s ease;
+  }
+  .collapsed-menu i{
+    transform: translateX(5px);
+    transition: font-size .2s ease .2s, transform .2s ease .2s;
+    vertical-align: middle;
+    font-size: 22px;
+  }
+</style>
 <template>
-  <div class="taskList">
-   是是是
+  <div class="layout">
+    <Layout :style="{minHeight: '100vh'}">
+      <Sider collapsible :collapsed-width="78" v-model="isCollapsed">
+        <Menu active-name="1-2" theme="light" width="auto" :class="menuitemClasses">
+          <MenuItem name="1-1">
+            <Icon type="md-home" />
+            <span>首页</span>
+          </MenuItem>
+          <MenuItem name="1-2">
+            <Icon type="md-speedometer" />
+            <span>在线监测</span>
+          </MenuItem>
+          <MenuItem name="1-3">
+            <Icon type="ios-photos" />
+            <span>台区管理</span>
+          </MenuItem>
+          <MenuItem name="1-4">
+            <Icon type="ios-person" />
+            <span>用户管理</span>
+          </MenuItem>
+          <MenuItem name="1-5">
+            <Icon type="ios-settings" />
+            <span>个人中心</span>
+          </MenuItem>
+        </Menu>
+      </Sider>
+      <Layout>
+        <Header :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)'}"></Header>
+        <Content :style="{padding: '0 16px 16px'}">
+          <Breadcrumb :style="{margin: '16px 0'}">
+            <BreadcrumbItem>Home</BreadcrumbItem>
+            <BreadcrumbItem>Components</BreadcrumbItem>
+            <BreadcrumbItem>Layout</BreadcrumbItem>
+          </Breadcrumb>
+          <Card>
+            <div style="height: 600px">Content</div>
+          </Card>
+        </Content>
+      </Layout>
+    </Layout>
   </div>
 </template>
 <script>
-
   export default {
-    name: 'taskList',
-    data() {
+    data () {
       return {
-      }
+        isCollapsed: false
+      };
     },
-    methods: {
+    computed: {
+      menuitemClasses: function () {
+        return [
+          'menu-item',
+          this.isCollapsed ? 'collapsed-menu' : ''
+        ]
+      }
     }
   }
 </script>
-<style>
-  .el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
-  }
-
-  .el-aside {
-    background-color: #D3DCE6;
-    color: #333;
-    text-align: center;
-    line-height: 200px;
-  }
-
-  .el-main {
-    background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
-    height: 860px;
-  }
-
-  body > .el-container {
-    margin-bottom: 40px;
-  }
-
-  .el-container:nth-child(5) .el-aside,
-  .el-container:nth-child(6) .el-aside {
-    line-height: 260px;
-  }
-
-  .el-container:nth-child(7) .el-aside {
-    line-height: 320px;
-  }
-</style>

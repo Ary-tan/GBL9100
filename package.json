@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
+    "iview": "^3.4.2",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-router": "^3.1.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.0",
