@@ -1,8 +1,8 @@
 <template>
   <div class="layout">
     <Layout :style="{minHeight: '100vh'}">
-      <Sider :collapsed-width="78" v-model="isCollapsed">
-        <Menu active-name="1-2" theme="light" width="auto" :class="menuitemClasses">
+      <Sider :collapsed-width="78">
+        <Menu active-name="1-2" theme="light" width="auto">
           <MenuItem name="1-1">
             <Icon type="md-home"/>
             <span>首页</span>
@@ -87,16 +87,7 @@
   export default {
     data() {
       return {
-        isCollapsed: false
       };
-    },
-    computed: {
-      menuitemClasses: function () {
-        return [
-          'menu-item',
-          this.isCollapsed ? 'collapsed-menu' : ''
-        ]
-      }
     }
   }
 </script>
