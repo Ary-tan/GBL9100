@@ -2,8 +2,8 @@
   <div class="layout">
     <Layout :style="{minHeight: '100vh'}">
       <Sider :collapsed-width="78">
-        <Menu active-name="1-2" theme="light" width="auto">
-          <MenuItem name="1-1">
+        <Menu :active-name="activeName" theme="light" width="auto">
+          <MenuItem name="/home" to="/home">
             <Icon type="md-home"/>
             <span>首页</span>
           </MenuItem>
@@ -87,7 +87,13 @@
   export default {
     data() {
       return {
+        activeName: this.$route.path
       };
+    },
+    watch: {
+      '$route'() {
+        this.activeName = this.$route.path
+      }
     }
   }
 </script>
